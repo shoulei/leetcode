@@ -6,7 +6,7 @@ class TwoSum {
         nums.forEachIndexed { index, i ->
             val diff = target - i
             if (map.contains(diff) && map[diff] != index) {
-                return intArrayOf(index, map[diff]!!).sortedArray()
+                return intArrayOf(index, map[diff]!!)
             } else {
                 map[i] = index
             }
