@@ -2,13 +2,14 @@ package com.leishou.solution
 
 class TwoSum {
     fun twoSum(nums: IntArray, target: Int): IntArray {
-        val map = mutableMapOf<Int, Int>()
-        nums.forEachIndexed { index, i ->
-            val diff = target - i
-            if (map.contains(diff) && map[diff] != index) {
-                return intArrayOf(index, map[diff]!!)
+        val map = HashMap<Int, Int>(nums.size)
+        for (i in nums.indices) {
+            val diff = target - nums[i]
+            val j = map[diff]
+            if (j != null) {
+                return intArrayOf(j, i)
             } else {
-                map[i] = index
+                map[nums[i]] = i
             }
         }
 
