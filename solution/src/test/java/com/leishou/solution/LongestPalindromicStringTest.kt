@@ -2,7 +2,9 @@ package com.leishou.solution
 
 import org.junit.Test
 import kotlin.test.assertTrue
-
+/*
+    Given a string s, return the longest palindromic substring in s.
+ */
 class LongestPalindromicStringTest {
     @Test
     fun testExample1() {
