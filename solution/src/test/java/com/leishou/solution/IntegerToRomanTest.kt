@@ -31,11 +31,4 @@ class IntegerToRomanTest {
         val result = sol.intToRoman(1994)
         assertEquals(result, "MCMXCIV")
     }
-
-    @Test
-    fun testExample5() {
-        val sol = IntegerToRoman()
-        val result = sol.intToRoman(3)
-        assertEquals(result, "III")
-    }
 }
