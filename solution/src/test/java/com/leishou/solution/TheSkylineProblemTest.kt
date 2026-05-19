@@ -81,7 +81,29 @@ class TheSkylineProblemTest {
         val expected = listOf(
             listOf(0, 5),
             listOf(2, 4),
-            listOf(3, 0),
+            listOf(3, 0)
+        )
+
+        assertContentEquals(expected, result)
+    }
+
+    @Test
+    fun testExample5() {
+        val sol = TheSkylineProblem()
+        val buildings = arrayOf(
+            intArrayOf(1, 5, 100),
+            intArrayOf(2, 6, 90),
+            intArrayOf(3, 4, 80),
+            intArrayOf(6, 10, 95),
+        )
+
+        val result = sol.getSkyline(buildings)
+
+        val expected = listOf(
+            listOf(1, 100),
+            listOf(5, 90),
+            listOf(6, 95),
+            listOf(10, 0)
         )
 
         assertContentEquals(expected, result)
