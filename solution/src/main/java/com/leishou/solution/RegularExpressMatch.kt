@@ -11,16 +11,19 @@ class RegularExpressMatch {
     fun isMatch(s: String, p: String): Boolean {
         val sLen = s.length
         val pLen = p.length
-        val cache = hashMapOf<Pair<Int, Int>, Boolean>()
+        // 0: init, -1: false, 1: true
+        val cache = Array(sLen + 1) {
+            IntArray(pLen + 1) { 0 }
+        }
         fun dfs(sIndex: Int, pIndex: Int): Boolean {
-            val pair = Pair(sIndex, pIndex)
-            cache[pair]?.let {
-                return it
+            val cc = cache[sIndex][pIndex]
+            if (cc != 0) {
+                return cc > 0
             }
 
             if (pIndex == pLen) {
                 val finished = sIndex == sLen
-                cache[pair] = finished
+                cache[sIndex][pIndex] = if (finished) 1 else -1
                 return finished
             }
 
@@ -34,7 +37,7 @@ class RegularExpressMatch {
                 charMatched && dfs(sIndex + 1, pIndex + 1)
             }
 
-            cache[pair] = ret
+            cache[sIndex][pIndex] =  if (ret) 1 else -1
             return ret
         }
 
