@@ -33,13 +33,6 @@ class RegularExpressMatchTest {
     }
 
     @Test
-    fun testExample4() {
-        val sol = RegularExpressMatch()
-        val result = sol.isMatch("aa", "a")
-        assertEquals(result, false)
-    }
-
-    @Test
     fun testExample6() {
         val sol = RegularExpressMatch()
         val result = sol.isMatch("aab", "c*a*b")
@@ -55,13 +48,6 @@ class RegularExpressMatchTest {
 
     @Test
     fun testExample8() {
-        val sol = RegularExpressMatch()
-        val result = sol.isMatch("ab", ".*")
-        assertEquals(result, true)
-    }
-
-    @Test
-    fun testExample9() {
         val sol = RegularExpressMatch()
         val result = sol.isMatch("aaa", "a*a")
         assertEquals(result, true)
@@ -92,6 +78,20 @@ class RegularExpressMatchTest {
     fun testExample13() {
         val sol = RegularExpressMatch()
         val result = sol.isMatch("a", ".*..a*")
+        assertEquals(result, false)
+    }
+
+    @Test
+    fun testExample14() {
+        val sol = RegularExpressMatch()
+        val result = sol.isMatch("abcdede", "ab.*de")
+        assertEquals(result, true)
+    }
+
+    @Test
+    fun testExample15() {
+        val sol = RegularExpressMatch()
+        val result = sol.isMatch("aaaaaaaaaaaaaaaaaaab", "a*a*a*a*a*a*a*a*a*a*")
         assertEquals(result, false)
     }
 }
