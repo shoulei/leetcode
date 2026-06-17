@@ -13,42 +13,21 @@ class AddTwoNumbersTest {
     @Test
     fun testExample1() {
         val sol = AddTwoNumbers()
-        val result = sol.addTwoNumbers(intArrayToListNode(intArrayOf(2, 4, 3)), intArrayToListNode(intArrayOf(5, 6, 4)))
-        assertArrayEquals(intArrayOf(7, 0 ,8), listNodeToIntArray(result))
+        val result = sol.addTwoNumbers(ListNode.intArrayToListNode(intArrayOf(2, 4, 3)), ListNode.intArrayToListNode(intArrayOf(5, 6, 4)))
+        assertArrayEquals(intArrayOf(7, 0, 8), ListNode.listNodeToIntArray(result))
     }
 
     @Test
     fun testExample2() {
         val sol = AddTwoNumbers()
-        val result = sol.addTwoNumbers(intArrayToListNode(intArrayOf(0)), intArrayToListNode(intArrayOf(0)))
-        assertArrayEquals(intArrayOf(0), listNodeToIntArray(result))
+        val result = sol.addTwoNumbers(ListNode.intArrayToListNode(intArrayOf(0)), ListNode.intArrayToListNode(intArrayOf(0)))
+        assertArrayEquals(intArrayOf(0), ListNode.listNodeToIntArray(result))
     }
 
     @Test
     fun testExample3() {
         val sol = AddTwoNumbers()
-        val result = sol.addTwoNumbers(intArrayToListNode(intArrayOf(9, 9, 9, 9, 9, 9, 9)), intArrayToListNode(intArrayOf(9, 9, 9, 9)))
-        assertArrayEquals(intArrayOf(8, 9, 9, 9, 0, 0, 0, 1), listNodeToIntArray(result))
-    }
-
-    private fun intArrayToListNode(nums: IntArray): AddTwoNumbers.ListNode {
-        val dummy = AddTwoNumbers.ListNode(0)
-        var cur = dummy
-        for (i in nums.indices) {
-            cur.next = AddTwoNumbers.ListNode(nums[i])
-            cur = cur.next!!
-        }
-        return dummy.next!!
-    }
-
-    private fun listNodeToIntArray(node: AddTwoNumbers.ListNode?): IntArray {
-        var cur = node
-        val list = mutableListOf<Int>()
-        while (cur != null) {
-            list.add(cur.`val`)
-            cur = cur.next
-        }
-
-        return list.toIntArray()
+        val result = sol.addTwoNumbers(ListNode.intArrayToListNode(intArrayOf(9, 9, 9, 9, 9, 9, 9)), ListNode.intArrayToListNode(intArrayOf(9, 9, 9, 9)))
+        assertArrayEquals(intArrayOf(8, 9, 9, 9, 0, 0, 0, 1), ListNode.listNodeToIntArray(result))
     }
 }
