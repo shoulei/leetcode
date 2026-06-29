@@ -14,7 +14,6 @@ class SubstringOfAllWords {
             var remainWords = words.size
             while (right <= lastWordStart) {
                 val sub = s.substring(right, right + wordLen)
-                window[sub] = (window[sub]?: 0) + 1
                 right += wordLen
                 if (need[sub] == null) {
                     window.clear()
@@ -23,6 +22,7 @@ class SubstringOfAllWords {
                     continue
                 }
 
+                window[sub] = (window[sub]?: 0) + 1
                 val needCt = need[sub]!!
                 remainWords--
                 while (needCt < window[sub]!! && left < right) {
