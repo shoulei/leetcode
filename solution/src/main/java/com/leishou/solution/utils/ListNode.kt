@@ -1,4 +1,4 @@
-package com.leishou.solution
+package com.leishou.solution.utils
 
 class ListNode(var `val`: Int) {
     var next: ListNode? = null

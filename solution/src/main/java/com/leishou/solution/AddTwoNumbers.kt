@@ -1,5 +1,7 @@
 package com.leishou.solution
 
+import com.leishou.solution.utils.ListNode
+
 class AddTwoNumbers {
     fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
         val dummy = ListNode(0)

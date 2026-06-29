@@ -1,5 +1,6 @@
 package com.leishou.solution
 
+import com.leishou.solution.utils.ListNode
 import java.util.PriorityQueue
 
 class MergeKSortedLists {

@@ -1,5 +1,7 @@
 package com.leishou.solution
 
+import com.leishou.solution.utils.ListNode
+
 class ReverseNodesInKGroup {
     fun reverseKGroup(head: ListNode?, k: Int): ListNode? {
         if (head == null || k == 1)

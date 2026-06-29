@@ -1,5 +1,6 @@
 package com.leishou.solution
 
+import com.leishou.solution.utils.ListNode
 import org.junit.Assert.assertArrayEquals
 import org.junit.Test
 
