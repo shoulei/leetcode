@@ -2,18 +2,20 @@ package com.leishou.solution
 
 class LongestValidParentheses {
     fun longestValidParentheses(s: String): Int {
-        val stack = ArrayDeque<Int>()
+        val stack = IntArray(s.length + 1)
         var longest = 0
-        stack.addLast(-1)
+        var top = 0
+        stack[top] = -1
         for (i in s.indices) {
             if (s[i] == '(') {
-                stack.addLast(i)
+                stack[++top] = i
             } else {
-                stack.removeLast()
-                if (stack.isEmpty()) {
-                    stack.addLast(i)
+                top--
+                if (top < 0) {
+                    stack[0] = i
+                    top = 0
                 } else {
-                    longest = maxOf(longest, i - stack.last())
+                    longest = maxOf(longest, i - stack[top])
                 }
             }
         }
