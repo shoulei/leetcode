@@ -47,10 +47,8 @@ class PalindromePartitioning {
         return mutableListOf<String>().apply {
             var start = 0
             for (i in array) {
-                if (i > start) {
-                    add(s.substring(start, i))
-                    start = i
-                }
+                add(s.substring(start, i))
+                start = i
             }
         }
     }
