@@ -24,16 +24,12 @@ class SudokuSolver {
         }
 
         // bitData should has exactly one bit set to 1
-        fun update(i: Int, j: Int, bitData: Int, updateBoard: Boolean = false): Boolean {
+        fun update(i: Int, j: Int, bitData: Int): Boolean {
             val bitCt = Integer.bitCount(bitData)
             if (bitCt == 0) {
                 return false
             } else if (bitCt > 1) {
                 return true
-            }
-
-            if (updateBoard) {
-                board[i][j] = intToChar(bitData)
             }
 
             if (updateMasks(i, j, bitData)) {
@@ -44,7 +40,7 @@ class SudokuSolver {
                             return false
                         } else if (Integer.bitCount(boardData[sameRow]) > 1) {
                             boardData[sameRow] = boardData[sameRow] and rows[i].inv()
-                            if (!update(i, index, boardData[sameRow], updateBoard))
+                            if (!update(i, index, boardData[sameRow]))
                                 return false
                         }
                     }
@@ -55,7 +51,7 @@ class SudokuSolver {
                             return false
                         } else if (Integer.bitCount(boardData[sameCol]) > 1) {
                             boardData[sameCol] = boardData[sameCol] and cols[j].inv()
-                            if (!update(index, j, boardData[sameCol], updateBoard))
+                            if (!update(index, j, boardData[sameCol]))
                                 return false
                         }
                     }
@@ -75,7 +71,7 @@ class SudokuSolver {
                                 return false
                             } else if (Integer.bitCount(boardData[sameBox]) > 1) {
                                 boardData[sameBox] = boardData[sameBox] and boxes[box].inv()
-                                if (!update(adjustX, adjustY, boardData[sameBox], updateBoard))
+                                if (!update(adjustX, adjustY, boardData[sameBox]))
                                     return false
                             }
                         }
@@ -97,9 +93,6 @@ class SudokuSolver {
                         val data = boardData[baseIndex + j]
                         boardData[baseIndex + j] =
                             data and rows[i].inv() and cols[j].inv() and boxes[box].inv()
-                        if (Integer.bitCount(boardData[baseIndex + j]) == 1) {
-                            board[i][j] = intToChar(boardData[baseIndex + j])
-                        }
                     }
                 }
             }
