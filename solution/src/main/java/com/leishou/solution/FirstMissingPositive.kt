@@ -15,7 +15,6 @@ class FirstMissingPositive {
             while (nums[i] in 1 until n && nums[nums[i] - 1] != nums[i]) {
                 swap(nums[i] - 1, i)
             }
-            println("after swap $i, array=${nums.toList()}")
         }
 
         for (i in nums.indices) {
