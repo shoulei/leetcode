@@ -2,8 +2,35 @@ package com.leishou.solution
 
 import java.util.PriorityQueue
 
+/*
+    Given a circular integer array nums (i.e., the next element of nums[nums.length - 1] is nums[0]),
+    return the next greater number for every element in nums.
+
+    The next greater number of a number x is the first greater number to its traversing-order next
+    in the array, which means you could search circularly to find its next greater number.
+    If it doesn't exist, return -1 for this number.
+ */
 class NextGreaterElementII {
     fun nextGreaterElements(nums: IntArray): IntArray {
+        val size = nums.size
+        val indexArray = IntArray(size)
+        val ret = IntArray(size) { -1 }
+        var pop = -1
+        for (i in 0 until size * 2) {
+            val current = nums[i % size]
+            while (pop >= 0 && nums[indexArray[pop]] < current) {
+                ret[indexArray[pop--]] = current
+            }
+
+            if (i < size) {
+                indexArray[++pop] = i
+            }
+        }
+
+        return ret
+    }
+
+    fun nextGreaterElements0(nums: IntArray): IntArray {
         val stack = ArrayDeque<Int>()
         val size = nums.size
         val ret = IntArray(size) { -1 }
