@@ -33,4 +33,10 @@ class SelfCrossingTest {
         val sol = SelfCrossing()
         assertEquals(true, sol.isSelfCrossing(intArrayOf(1, 1, 2, 1, 1)))
     }
+
+    @Test
+    fun testExample6() {
+        val sol = SelfCrossing()
+        assertEquals(false, sol.isSelfCrossing(intArrayOf(3, 3, 3, 2, 1, 1)))
+    }
 }

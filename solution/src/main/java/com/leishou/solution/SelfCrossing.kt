@@ -12,52 +12,25 @@ class SelfCrossing {
     */
     fun isSelfCrossing(distance: IntArray): Boolean {
         val size = distance.size
-        val pointsArray = Array(size + 1) { IntArray(2) }
-        pointsArray[0] = intArrayOf(0, 0)
-        var x = 0
-        var y = 0
-        for (i in 0 until size) {
-            val direction = i % 4
-            when (direction) {
-                0 -> y += distance[i]
-                1 -> x -= distance[i]
-                2 -> y -= distance[i]
-                else -> x += distance[i]
-            }
-            pointsArray[i + 1] = intArrayOf(x, y)
-        }
-
-        if (pointsArray[size][0] == 0 && pointsArray[size][1] == 0)
-            return true
-
-        var vertical = 0
-        while (vertical < size) {
-            val p1 = pointsArray[vertical]
-            val p2 = pointsArray[vertical + 1]
-            var horizon = 1
-            while (horizon < size) {
-                val p3 = pointsArray[horizon]
-                val p4 = pointsArray[horizon + 1]
-                val diff = if (vertical > horizon) vertical - horizon else horizon - vertical
-                if (isCrossing(p1, p2, p3, p4) && diff != 1) {
-                    return true
-                }
-                horizon += 2
+        for (i in 3 until size) {
+            // d[i] cross with d[i-3]
+            if (distance[i - 1] <= distance[i - 3] && distance[i] >= distance[i - 2]) {
+                return true
             }
 
-            vertical += 2
+            // d[i] cross with d[i-4]
+            if (i >= 4 && distance[i - 3] == distance[i - 1] && distance[i] + distance[i - 4] >= distance[i - 2]) {
+                return true
+            }
 
+            // d[i] cross with d[i-5]
+            if (i >= 5 && distance[i - 1] + distance[i - 5] >= distance[i - 3] &&
+                distance[i] + distance[i - 4] >= distance[i - 2] &&
+                distance[i - 2] > distance[i - 4] && distance[i - 3] > distance[i - 1]) {
+                return true
+            }
         }
 
         return false
-    }
-
-    private fun isCrossing(vStart: IntArray, vEnd: IntArray, hStart: IntArray, hEnd: IntArray): Boolean {
-        val vX = vStart[0]
-        val hY = hStart[1]
-
-        return ((vX >= hStart[0] && vX <= hEnd[0]) || (vX >= hEnd[0] && vX <= hStart[0])) &&
-                ((hY >= vStart[1] && hY <= vEnd[1]) || (hY >= vEnd[1] && hY <= vStart[1]))
-
     }
 }
