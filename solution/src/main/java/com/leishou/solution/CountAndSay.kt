@@ -1,7 +1,5 @@
 package com.leishou.solution
 
-import java.util.Arrays
-
 class CountAndSay {
     fun countAndSay(n: Int): String {
         fun dfs(k: Int): String {
