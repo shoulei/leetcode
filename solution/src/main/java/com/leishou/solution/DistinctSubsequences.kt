@@ -11,6 +11,23 @@ class DistinctSubsequences {
     fun numDistinct(s: String, t: String): Int {
         val sLen = s.length
         val tLen = t.length
+        val dp = IntArray(tLen + 1) { 0 }
+        dp[0] = 1
+
+        for (i in 0 until sLen) {
+            for (j in tLen - 1 downTo 0) {
+                if (s[i] == t[j]) {
+                    dp[j + 1] += dp[j]
+                }
+            }
+        }
+
+        return dp[tLen]
+    }
+
+    fun numDistinct_(s: String, t: String): Int {
+        val sLen = s.length
+        val tLen = t.length
         val memo = Array(sLen) {
             IntArray(tLen) { -1 } // -1: uninitialized
         }
