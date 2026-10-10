@@ -14,10 +14,8 @@ class CombinationSumTest {
     fun testExample2() {
         val sol = CombinationSum()
         val expected = listOf(listOf(2, 2, 2, 2), listOf(2, 3, 3), listOf(3, 5))
-            .map { it.sorted() }
             .sortedBy { it.toString() }
         val ret = sol.combinationSum(intArrayOf(2, 3, 5), 8)
-            .map { it.sorted() }
             .sortedBy { it.toString() }
         assertContentEquals(expected, ret)
     }
@@ -26,10 +24,8 @@ class CombinationSumTest {
     fun testExample3() {
         val sol = CombinationSum()
         val expected = listOf(listOf(2, 2, 3), listOf(7))
-            .map { it.sorted() }
             .sortedBy { it.toString() }
         val ret = sol.combinationSum(intArrayOf(2, 3, 6, 7), 7)
-            .map { it.sorted() }
             .sortedBy { it.toString() }
         assertContentEquals(expected, ret)
     }
