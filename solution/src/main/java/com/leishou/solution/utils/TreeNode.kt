@@ -63,5 +63,15 @@ class TreeNode(var `val`: Int) {
 
             return ret
         }
+
+        fun findNode(root: TreeNode?, target: Int): TreeNode? {
+            if (root == null)
+                return null
+
+            if (root.`val` == target)
+                return root
+
+            return findNode(root.left, target)?: findNode(root.right, target)
+        }
     }
 }
