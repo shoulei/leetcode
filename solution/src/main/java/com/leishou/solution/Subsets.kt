@@ -20,9 +20,12 @@ class Subsets {
                 return
             }
 
+            // choose
             singlePath.add(nums[index])
             dfs(index + 1)
             singlePath.removeLast()
+
+            // skip
             dfs(index + 1)
         }
 
