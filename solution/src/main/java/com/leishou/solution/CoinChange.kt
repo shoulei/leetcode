@@ -34,7 +34,6 @@ class CoinChange {
         }
 
         fun dfs(index: Int, remain: Int): Int {
-            println("dfs $index $remain")
             if (remain == 0 && index < n) {
                 dp[index][remain] = 0
                 return 0
