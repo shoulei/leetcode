@@ -1,5 +1,12 @@
 package com.leishou.solution
 
+/*
+    Given a string s, partition s such that every substring of the partition is a palindrome.
+    Return all possible palindrome partitioning of s.
+
+    1 <= s.length <= 16
+    s contains only lowercase English letters.
+ */
 class PalindromePartitioning {
     fun partition(s: String): List<List<String>> {
         val sLen = s.length
